@@ -1,87 +1,351 @@
-from tkinter import *
-import random as rd
+import tkinter as tk
 
-def printer():
-    comp_choice = rd.choice(['rock', 'paper', 'scissor'])
+root = tk.Tk()
+root.title('Simple Calculator')
+root.configure(bg = '#576EE4')
+root.resizable(0,0)
 
-    if hum_selection.get() != 'default':
-        com_selection.set(comp_choice)
-        if hum_selection.get() == 'rock':
-            if comp_choice == 'paper':
-                score_com.set(score_com.get() + 1)
-                result.set("You lost")
-            elif comp_choice == 'scissor':
-                score_hum.set(score_hum.get() + 1)
-                result.set("You won!")
-            else:
-                result.set("Draw")
+def enter1():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '1')
+    else:
+        input_var.set(input_var.get() + '1')
+        
+def enter2():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '2')
+    else:
+        input_var.set(input_var.get() + '2')    
+def enter3():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '3')
+    else:
+        input_var.set(input_var.get() + '3')
+def enter4():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '4')
+    else:
+        input_var.set(input_var.get() + '4')
+def enter5():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '5')
+    else:
+        input_var.set(input_var.get() + '5')
+def enter6():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '6')
+    else:
+        input_var.set(input_var.get() + '6')
+def enter7():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '7')
+    else:
+        input_var.set(input_var.get() + '7')
+def enter8():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '8')
+    else:
+        input_var.set(input_var.get() + '8')
+def enter9():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '9')
+    else:
+        input_var.set(input_var.get() + '9')
+def enter0():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '0')
+    else:
+        input_var.set(input_var.get() + '0')
 
-        elif hum_selection.get() == 'scissor':
-            if comp_choice == 'paper':
-                score_hum.set(score_hum.get() + 1)
-                result.set("You won!")
-            elif comp_choice == 'rock':
-                score_com.set(score_com.get() + 1)
-                result.set("You lost")
-            else:
-                result.set("Draw")
+def delete():
+    if input_var.get().isalpha():
+        input_var.set('')
+    else:
+        input_var.set(input_var.get()[0:-1])
 
-        elif hum_selection.get() == 'paper':
-            if comp_choice == 'rock':
-                score_hum.set(score_hum.get() + 1)
-                result.set("You won!")
-            elif comp_choice == 'scissor':
-                score_com.set(score_com.get() + 1)
-                result.set("You lost")
-            else:
-                result.set("Draw")
-        else:
-            result.set("Select an option")
+def plus():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '+')
+    else:
+        input_var.set(input_var.get() + '+')
+def minus():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '-')
+    else:
+        input_var.set(input_var.get() + '-')
+def multiply():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '*')
+    else:
+        input_var.set(input_var.get() + '*')
+def divide():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '/')
+    else:
+        input_var.set(input_var.get() + '/')
+def decimal():
+    if input_var.get() == 'Invalid':
+        input_var.set('')
+        input_var.set(input_var.get() + '.')
+    else:
+        input_var.set(input_var.get() + '.')
+def all_clear():
+    input_var.set('')
 
-def reset():
-    score_hum.set(0)
-    score_com.set(0)
+def calc():
+    if input_var.get() == '':
+        pass
+    else:
+        try:
+            input_var.set(round(eval(input_var.get()), 12))
+        except:
+            input_var.set('Invalid')
 
-root = Tk()
-root.title("Rock Paper Scissor")
-root.resizable(0, 0)
 
-hum_selection = StringVar(value = "default")
-com_selection = StringVar(value = "default")
 
-score_hum = IntVar(value = 0)
-score_com = IntVar(value = 0)
-result = StringVar(value = " ")
+input_var = tk.StringVar(value = '', master = root)
 
-hum_select_label = Label(root, textvariable = hum_selection, font = ("verdana", 15))
-com_select_label = Label(root, textvariable = com_selection, font = ("verdana", 15))
-res_label = Label(root, textvariable = result, font = ("verdana", 15))
-hum_score_label = Label(root, textvariable = score_hum, font = ("verdana", 15))
-com_score_label = Label(root, textvariable = score_com, font = ("verdana", 15))
-inst_label = Label(root, text = "Make a choice:", font = ("verdana", 15))
-rock_rb = Radiobutton(root, text = "Rock", variable = hum_selection, value = "rock", font = ("verdana", 12))
-paper_rb = Radiobutton(root, text = "Paper", variable = hum_selection, value = "paper", font = ("verdana", 12))
-scissor_rb = Radiobutton(root, text = "Scissor", variable = hum_selection, value = "scissor", font = ("verdana", 12))
+tk.Label(textvariable = input_var,
+         font = ('verdana', 30),
+         fg = '#6FE3E1',
+         background = '#576EE4').grid(row = 0, column = 0, columnspan = 4)
 
-submit_btn = Button(root, text = "Play", command = printer, font = ("Helvetica", 10))
-reset_btn = Button(root, text = "Reset", command = reset, font = ("Helvetica", 10))
+button1 = tk.Button(text = '1',
+                    activebackground= 'black',
+                      activeforeground='white',
+                      relief = tk.FLAT, bd = 3,
+                      background = '#65B4E2',
+                      font = ('gothic', 15),
+                      command = enter1,
+                      padx = 0,
+                      pady = 0,
+                      height = 2,
+                      width = 10).grid(row = 4, column = 0)
 
-Label(root, text = "Player score =", font = ("helvetica", 10, "bold")).grid(row = 0, column = 0, padx = 10, pady = 20)
-hum_score_label.grid(row = 0, column = 1)
-Label(root, text = "Computer score =", font = ("helvetica", 10, "bold")).grid(row = 0, column = 2, padx = 10, pady = 20)
-com_score_label.grid(row = 0, column = 3)
+button2 = tk.Button(text = '2',
+                    activebackground= 'black',
+                    activeforeground='white',
+                    relief = tk.FLAT,
+                    bd = 3,
+                    background = '#65B4E2',
+                    font = ('gothic', 15),
+                    command = enter2,
+                    padx = 0,
+                    pady = 0,
+                    height = 2,
+                    width = 10).grid(row = 4, column = 1)
 
-Label(root, text = "You chose", font = ("verdana", 15)).grid(row = 1, column = 0, padx = 0)
-hum_select_label.grid(row = 2, column = 0, columnspan = 2)
-Label(root, text = "Computer chose", font = ("verdana", 15)).grid(row = 1, column = 2)
-com_select_label.grid(row = 2, column = 2, columnspan = 2)
-res_label.grid(row = 3, column = 0, columnspan = 4)
-inst_label.grid(row = 4, column = 0, columnspan = 4)
-rock_rb.grid(row = 5, column = 0, columnspan = 4)
-paper_rb.grid(row = 6, column = 0, columnspan = 4)
-scissor_rb.grid(row = 7, column = 0,columnspan = 4)
-submit_btn.grid(row = 8, column = 0, columnspan = 2, ipadx = 10)
-reset_btn.grid(row = 8, column = 2, columnspan = 2, ipadx = 10)
+button3 = tk.Button(text = '3',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter3,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 4, column = 2)
+button4 = tk.Button(text = '4',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter4,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 3, column = 0)
+button5 = tk.Button(text = '5',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter5,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 3, column = 1)
+button6 = tk.Button(text = '6',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter6,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 3, column = 2)
+button7 = tk.Button(text = '7',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter7,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 2, column = 0)
+button8 = tk.Button(text = '8',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter8,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 2, column = 1)
+button9 = tk.Button(text = '9',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter9,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 2, column = 2)
+button0 = tk.Button(text = '0',
+                     activebackground= 'black',
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     bd = 3,
+                    background = '#65B4E2',
+                     font = ('gothic', 15),
+                     command = enter0,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 5, column = 1)
 
+del_button = tk.Button(text = 'C',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#5C86E4',
+                     font = ('gothic', 15),
+                     command = delete,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 21).grid(row = 1, column = 2, columnspan = 2)
+
+all_clear_button = tk.Button(text = 'AC',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#5C86E4',
+                     font = ('gothic', 15),
+                     command = all_clear,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 21).grid(row = 1, column = 0, columnspan = 2)
+
+plus_button = tk.Button(text = '+',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = plus,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 2, column = 3)
+
+minus_button = tk.Button(text = '-', activebackground= 'black', bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = minus,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 3, column = 3)
+
+multiply_button = tk.Button(text = 'x',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = multiply,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 4, column = 3)
+
+divide_button = tk.Button(text = '/',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = divide,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 5, column = 3)
+
+calc_button = tk.Button(text = '=',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = calc,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 5, column = 2)
+
+decimal_button = tk.Button(text = '.',
+                     activebackground= 'black',
+                     bd = 3,
+                     activeforeground='white',
+                    relief = tk.FLAT,
+                     background='#6ACCE2',
+                     font = ('gothic', 15),
+                     command = decimal,
+                     padx = 0,
+                     pady = 0,
+                     height = 2,
+                     width = 10).grid(row = 5, column = 0)
 
 root.mainloop()
